@@ -87,7 +87,8 @@
       }
     }),
 
-    created() { 
+    created() {
+      reload();
       this.child_status.child_id = this.$route.query.child_id
       
       axios.post(
