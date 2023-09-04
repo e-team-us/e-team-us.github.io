@@ -101,7 +101,7 @@
         if(this.child_status.attendance == "1") {
           this.attend_j = "出席";
         }
-        else if (!this.child_status.attendance == "0") {
+        else if (this.child_status.attendance == "0") {
           this.attend_j = "欠席";
         }
         else {
