@@ -277,17 +277,7 @@
     }),
 
     mounted() {
-      this.childminder_status.childminder_id = this.$route.query.childminder_id
-      this.childminder_status.childminder_name = this.$route.query.childminder_name
-      axios.get(
-        AppServerUrl + '/myapp/children/'
-      )
-      .then(res => {
-        this.attending_children = res.data.attending_children;
-        this.absent_children = res.data.absent_children;
-        this.empty_children = res.data.empty_children;
-        console.log(res.data);
-      })
+      this.recvChildren();
     },
 
     methods: {
@@ -310,7 +300,21 @@
           console.log(res);
         })
         this.$router.push({path: '/childminderview', query: {childminder_id: this.childminder_status.childminder_id, childminder_name: this.childminder_status.childminder_name}});
-        location.reload();
+        this.recvChildren();
+      },
+
+      recvChildren() {
+        this.childminder_status.childminder_id = this.$route.query.childminder_id;
+        this.childminder_status.childminder_name = this.$route.query.childminder_name;
+        axios.get(
+          AppServerUrl + '/myapp/children/'
+        )
+        .then(res => {
+          this.attending_children = res.data.attending_children;
+          this.absent_children = res.data.absent_children;
+          this.empty_children = res.data.empty_children;
+          console.log(res.data);
+        });
       },
 
       attend_J(a) {
