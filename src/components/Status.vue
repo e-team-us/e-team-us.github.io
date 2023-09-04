@@ -75,21 +75,24 @@
   export default {
     name:"status",
 
-    data: () => ({
-      attend_j: ""
-    },
-    {child_status: {
-      child_id: "0",
-      child_name: "",
-      attendance: "",
-      reason: "",
-      reply: "",
-      datetime: ""
+    data: () => (
+      {
+        attend_j: ""
+      },
+      {
+        child_status: {
+          child_id: "0",
+          child_name: "",
+          attendance: "",
+          reason: "",
+          reply: "",
+          datetime: ""
+        }
       }
-    }),
+    ),
 
     created() {
-      this.recvStatus();
+      setTimeout(this.recvStatus, 1000);
     },
 
     methods: {
@@ -111,7 +114,7 @@
       },
 
       recvStatus() {
-        this.child_status.child_id = this.$route.query.child_id
+        this.child_status.child_id = this.$route.query.child_id;
       
         axios.post(
           AppServerUrl + '/myapp/status/',
@@ -126,7 +129,7 @@
           this.child_status.reason = res.data.reason;
           this.child_status.reply = res.data.reply;
           console.log(res);
-        })
+        });
       }
     }
   }

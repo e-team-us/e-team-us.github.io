@@ -274,10 +274,11 @@
         reply: "未確認",
         datetime: "2023/08/31（初期値）"
       },
+      interval_id: 0
     }),
 
     mounted() {
-      this.recvChildren();
+      setInterval(this.recvChildren, 5000);
     },
 
     methods: {
@@ -301,7 +302,7 @@
         })
         // this.$router.push({path: '/childminderview', query: {childminder_id: this.childminder_status.childminder_id, childminder_name: this.childminder_status.childminder_name}});
         
-        setTimeout(this.recvChildren(), 1000);
+        setTimeout(this.recvChildren, 1000);
       },
 
       recvChildren() {
