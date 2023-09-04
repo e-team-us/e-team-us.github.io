@@ -65,7 +65,7 @@
           }
         )
         axios.post(
-          'http://127.0.0.1:8000/myapp/regist/',
+          'https://eteamus.pythonanywhere.com/myapp/regist/',
           {
             "child_id" : this.child_status_input.child_id,
             "attendance" : this.child_status_input.attendance,

@@ -91,7 +91,7 @@
       this.child_status.child_id = this.$route.query.child_id
       
       axios.post(
-        'http://127.0.0.1:8000/myapp/status/',
+        'https://eteamus.pythonanywhere.com/myapp/status/',
         {
           "child_id" : this.child_status.child_id
         }
