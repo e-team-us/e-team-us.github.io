@@ -299,8 +299,9 @@
         .then(res => {
           console.log(res);
         })
-        this.$router.push({path: '/childminderview', query: {childminder_id: this.childminder_status.childminder_id, childminder_name: this.childminder_status.childminder_name}});
-        this.recvChildren();
+        // this.$router.push({path: '/childminderview', query: {childminder_id: this.childminder_status.childminder_id, childminder_name: this.childminder_status.childminder_name}});
+        
+        setTimeout(this.recvChildren(), 1000);
       },
 
       recvChildren() {
