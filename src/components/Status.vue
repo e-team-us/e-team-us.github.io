@@ -71,6 +71,7 @@
 
 <script>
   import axios from 'axios'
+  import AppServerUrl from '@/plugins/AppServerUrl'
   export default {
     name:"status",
 
@@ -88,11 +89,10 @@
     }),
 
     created() {
-      reload();
       this.child_status.child_id = this.$route.query.child_id
       
       axios.post(
-        'https://eteamus.pythonanywhere.com/myapp/status/',
+        AppServerUrl + '/myapp/status/',
         {
           "child_id" : this.child_status.child_id
         }

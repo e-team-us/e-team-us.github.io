@@ -242,6 +242,7 @@
 </template>
 
 <script>
+  import AppServerUrl from '@/plugins/AppServerUrl'
   import axios from 'axios'
   export default {
     name:"childminder_status",
@@ -279,7 +280,8 @@
       this.childminder_status.childminder_id = this.$route.query.childminder_id
       this.childminder_status.childminder_name = this.$route.query.childminder_name
       axios.get(
-        'https://eteamus.pythonanywhere.com/myapp/children/')
+        AppServerUrl + '/myapp/children/'
+      )
       .then(res => {
         this.attending_children = res.data.attending_children;
         this.absent_children = res.data.absent_children;
@@ -298,7 +300,7 @@
           }
         )
         axios.post(
-          'http://127.0.0.1:8000/myapp/updatereply/',
+          AppServerUrl + '/myapp/updatereply/',
           {
             "child_id" : this.current_children.child_id,
             "reply" : "確認済み"
@@ -308,6 +310,7 @@
           console.log(res);
         })
         this.$router.push({path: '/childminderview', query: {childminder_id: this.childminder_status.childminder_id, childminder_name: this.childminder_status.childminder_name}});
+        location.reload();
       },
 
       attend_J(a) {

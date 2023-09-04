@@ -38,17 +38,20 @@
 
 <script>
   import axios from 'axios'
+  import AppServerUrl from '@/plugins/AppServerUrl'
 
   export default {
     name: "forms",
 
     data: () => (
-      {child_status_input: {
-        child_id: "",
-        attendance: "",
-        reason: "",
+      {
+        child_status_input: {
+          child_id: "",
+          attendance: "",
+          reason: "",
         }
-      }),
+      }
+    ),
 
     created() {
       this.child_status_input.child_id = this.$route.query.child_id
@@ -65,13 +68,13 @@
           }
         )
         axios.post(
-          'https://eteamus.pythonanywhere.com/myapp/regist/',
+          AppServerUrl + '/myapp/regist/',
           {
             "child_id" : this.child_status_input.child_id,
             "attendance" : this.child_status_input.attendance,
             "reason" : this.child_status_input.reason
           }
-          )
+        )
         .then(res => {
           this.child_status_input.response = res;
           console.log(res);
